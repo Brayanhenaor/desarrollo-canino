@@ -49,7 +49,7 @@ export const Navbar = () => {
         <div className="w-screen top-0 z-30 h-screen bg-black/80 fixed">
           <div className="w-full h-full flex gap-3 flex-col justify-center items-center animate__animated animate__animated animate__animated animate__fadeIn">
             {routes.map((route) => (
-              <h3 className="cursor-pointer text-white text-2xl">
+              <h3 key={route.route} className="cursor-pointer text-white text-2xl">
                 {route.name}
               </h3>
             ))}

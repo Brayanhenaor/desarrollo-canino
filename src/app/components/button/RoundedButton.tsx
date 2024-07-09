@@ -7,6 +7,7 @@ interface Props {
   color: string;
   bgColor: string;
   className: string;
+  [x:string]: any;
 }
 export const RoundedButton = ({
   text,
