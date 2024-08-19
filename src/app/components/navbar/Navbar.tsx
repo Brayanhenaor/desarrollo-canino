@@ -9,14 +9,9 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 export const Navbar = () => {
-  const [hash, setHash] = useState("");
   const router = useRouter();
   const pathname = usePathname();
   const [showMenu, setShowMenu] = useState(false);
-
-  useEffect(() => {
-    setHash(window.location.hash);
-  }, [hash]);
 
   const handleOpenMenu = () => {
     setShowMenu(prev => !prev)
@@ -31,7 +26,6 @@ export const Navbar = () => {
             key={route.route}
             onClick={() => {
               router.push(route.route);
-              setHash(window.location.hash);
             }}
             className={`cursor-pointer text-xl text-${color.black
               } ${pathname === route.route ? "font-bold text-black" : ""
@@ -47,7 +41,12 @@ export const Navbar = () => {
         <div className="w-screen top-0 z-30 h-screen bg-black/80 fixed">
           <div className="w-full h-full flex gap-3 flex-col justify-center items-center animate__animated animate__animated animate__animated animate__fadeIn">
             {routes.map((route) => (
-              <h3 key={route.route} className="cursor-pointer text-white text-2xl">
+              <h3
+                onClick={() => {
+                  router.push(route.route);
+                }}
+                key={route.route}
+                className="cursor-pointer text-white text-2xl">
                 {route.name}
               </h3>
             ))}
