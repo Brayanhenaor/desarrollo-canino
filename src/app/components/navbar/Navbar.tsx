@@ -44,6 +44,7 @@ export const Navbar = () => {
               <h3
                 onClick={() => {
                   router.push(route.route);
+                  handleOpenMenu()
                 }}
                 key={route.route}
                 className="cursor-pointer text-white text-2xl">
