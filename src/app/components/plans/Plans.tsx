@@ -1,4 +1,4 @@
-import { poppins } from "@/app/utils/fonts/fonts";
+import { anton, poppins } from "@/app/utils/fonts/fonts";
 import React from "react";
 
 const plans = [
@@ -34,8 +34,8 @@ const plans = [
 ];
 export const Services = () => {
   return (
-    <section className={`bg-[#8B4513] text-[#FFF5E4] px-4 py-10 ${poppins.className}`}>
-      <h2 className="font-bold text-3xl flex justify-center">Servicios</h2>
+    <section className={`bg-[#8B4513] text-[#FFF5E4] px-4 py-10 ${anton.className}`}>
+      <h2 className="font-bold text-3xl flex justify-center tracking-wide">SERVICIOS</h2>
       <div className="container mx-auto flex flex-wrap justify-center">
         {plans.map((plan, index) => (
           <div className="basis-full md:basis-1/2 lg:basis-1/3 overflow-hidden p-2" key={index}>
