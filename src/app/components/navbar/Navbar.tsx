@@ -1,7 +1,7 @@
 "use client";
 import 'animate.css';
 import { color } from "@/app/utils/colors/color";
-import { poppins } from "@/app/utils/fonts/fonts";
+import { anton, poppins } from "@/app/utils/fonts/fonts";
 import { routes } from "@/app/utils/router/routes";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
@@ -19,12 +19,12 @@ export const Navbar = () => {
   }, [hash]);
 
   const handleOpenMenu = () => {
-    setShowMenu(prev=> !prev)
+    setShowMenu(prev => !prev)
   };
 
   return (
-    <div className="w-screen flex items-center justify-around p-4">
-      <Image src="/logo.png" width={250} height={100} alt="logo" />
+    <div className={`${anton.className} w-screen text-[#8B4513] bg-[#FFF5E4] flex items-center justify-around p-5`}>
+      <Image src="/logo-dark.png" width={250} height={100} alt="logo" />
       <ul className="hidden sm:flex gap-4">
         {routes.map((route) => (
           <li
@@ -33,19 +33,17 @@ export const Navbar = () => {
               router.push(route.route);
               setHash(window.location.hash);
             }}
-            className={`${poppins.className} cursor-pointer text-${
-              color.black
-            } ${
-              pathname + hash === route.route ? "font-bold text-sky-600" : ""
-            }`}
+            className={`cursor-pointer text-xl text-${color.black
+              } ${pathname === route.route ? "font-bold text-black" : ""
+              }`}
           >
-            {route.name}
+            {route.name.toUpperCase()}
           </li>
         ))}
       </ul>
       <AiOutlineMenu size={30} onClick={handleOpenMenu} className="sm:hidden" />
 
-      {showMenu && ( 
+      {showMenu && (
         <div className="w-screen top-0 z-30 h-screen bg-black/80 fixed">
           <div className="w-full h-full flex gap-3 flex-col justify-center items-center animate__animated animate__animated animate__animated animate__fadeIn">
             {routes.map((route) => (

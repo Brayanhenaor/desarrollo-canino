@@ -4,7 +4,7 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <div className="flex flex-col justify-center items-center bg-[#FFDAB9] rounded-tr-full mt-10 w-screen px-2 py-8">
+    <div className="flex flex-col justify-center items-center bg-[#8B4513] text-[#FFF5E4] rounded-tr-full w-screen px-2 py-8">
       <Image src="/logo.png" width={250} height={100} alt="logo" />
         <span className={poppins.className}>Sitio web desarrollador por <b>Brayan Henao</b></span>
     </div>

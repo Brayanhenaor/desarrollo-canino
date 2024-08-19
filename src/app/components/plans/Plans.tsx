@@ -34,9 +34,9 @@ const plans = [
 ];
 export const Services = () => {
   return (
-    <section className={poppins.className}>
-        <h2 className="font-bold text-3xl flex justify-center">Servicios</h2>
-      <div className="flex flex-wrap justify-center">
+    <section className={`bg-[#8B4513] text-[#FFF5E4] px-4 py-10 ${poppins.className}`}>
+      <h2 className="font-bold text-3xl flex justify-center">Servicios</h2>
+      <div className="container mx-auto flex flex-wrap justify-center">
         {plans.map((plan, index) => (
           <div className="basis-full md:basis-1/2 lg:basis-1/3 overflow-hidden p-2" key={index}>
             <div className="relative overflow-hidden rounded-2xl">

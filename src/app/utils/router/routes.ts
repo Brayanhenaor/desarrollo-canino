@@ -5,7 +5,7 @@ export const routes = [
     },
     {
         name: 'Adiestramiento',
-        route: '/#adiestramiento'
+        route: '/training'
     },
     {
         name: 'Guarderia',
