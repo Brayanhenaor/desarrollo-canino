@@ -33,7 +33,7 @@ export default function Home() {
                 height={170} />
               <span className={`font-bold ${anton.className} text-2xl text-[#8B4513]`}>SANTIAGO</span>
               <span className={`${poppins.className} text-sm text-[#8B4513 mb-2`}>Educador canino</span>
-              <p className={`text-center max-w-[50%] text-lg ${poppins.className}`}>
+              <p className={`text-center sm:max-w-[80%] md:max-w-[50%] text-lg ${poppins.className}`}>
                 Hola, soy
                 <b> Santiago</b>, adiestrador canino con X experiencia... Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic magni soluta officia libero. Dicta perspiciatis nostrum veniam placeat ea repellat natus cupiditate. Officiis ab ad aut consectetur aperiam error esse!
               </p>
