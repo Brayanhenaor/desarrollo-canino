@@ -18,48 +18,54 @@ export const Navbar = () => {
   };
 
   return (
-    <div className={`${anton.className} w-screen text-[#8B4513] bg-[#FFF5E4] flex items-center justify-around p-5`}>
-      <Image src="/logo-dark.png" width={250} height={100} alt="logo" />
-      <ul className="hidden sm:flex gap-4">
-        {routes.map((route) => (
-          <li
-            key={route.route}
-            onClick={() => {
-              router.push(route.route);
-            }}
-            className={`cursor-pointer text-xl text-${color.black
-              } ${pathname === route.route ? "font-bold text-black" : ""
-              }`}
-          >
-            {route.name.toUpperCase()}
-          </li>
-        ))}
-      </ul>
-      <AiOutlineMenu size={30} onClick={handleOpenMenu} className="sm:hidden" />
+    <>
+      <div className={`hover:scale-105 transition-all hidden sm:block bg-[#6A9C89] ${anton.className} mt-2 z-10 shadow-xl px-6 py-3 rounded-full fixed left-1/2 transform -translate-x-1/2`}>
+        <ul className="flex gap-4">
+          {routes.map((route) => (
+            <li
+              key={route.route}
+              onClick={() => {
+                router.push(route.route);
+              }}
+              className={`cursor-pointer text-xl text-[#FFF5E4] ${pathname === route.route ? "font-bold text-white" : ""
+                }`}
+            >
+              {route.name.toUpperCase()}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className={`${anton.className} w-screen text-[#8B4513] bg-[#FFF5E4] flex items-center sm:justify-start justify-around p-5`}>
+        <Image src="/logo-dark.png" width={250} height={100} alt="logo" />
 
-      {showMenu && (
-        <div className="w-screen top-0 z-30 h-screen bg-black/80 fixed">
-          <div className="w-full h-full flex gap-3 flex-col justify-center items-center animate__animated animate__animated animate__animated animate__fadeIn">
-            {routes.map((route) => (
-              <h3
-                onClick={() => {
-                  router.push(route.route);
-                  handleOpenMenu()
-                }}
-                key={route.route}
-                className="cursor-pointer text-white text-2xl">
-                {route.name}
-              </h3>
-            ))}
-            <AiOutlineCloseCircle
-              size={50}
-              color="white"
-              onClick={handleOpenMenu}
-              className="mt-3 cursor-pointer"
-            />
+
+        <AiOutlineMenu size={30} onClick={handleOpenMenu} className="sm:hidden" />
+
+        {showMenu && (
+          <div className="w-screen top-0 z-30 h-screen bg-black/80 fixed">
+            <div className="w-full h-full flex gap-3 flex-col justify-center items-center animate__animated animate__animated animate__animated animate__fadeIn">
+              {routes.map((route) => (
+                <h3
+                  onClick={() => {
+                    router.push(route.route);
+                    handleOpenMenu()
+                  }}
+                  key={route.route}
+                  className="cursor-pointer text-white text-2xl">
+                  {route.name}
+                </h3>
+              ))}
+              <AiOutlineCloseCircle
+                size={50}
+                color="white"
+                onClick={handleOpenMenu}
+                className="mt-3 cursor-pointer"
+              />
+            </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
+
   );
 };

@@ -43,7 +43,7 @@ export default function Home() {
 
           <section
             id="adiestramiento"
-            className="flex px-4 py-10 flex-col-reverse bg-[#8B4513] text-[#FFF5E4] w-full md:flex-row items-center gap-10 justify-center"
+            className="md:rounded-r-full flex px-4 py-10 flex-col-reverse bg-[#8B4513] text-[#FFF5E4] w-full md:flex-row items-center gap-10 justify-center"
           >
             <div >
               <div className="container mx-auto flex flex-col mb-2">

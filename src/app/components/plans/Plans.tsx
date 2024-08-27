@@ -34,7 +34,7 @@ const plans = [
 ];
 export const Services = () => {
   return (
-    <section className={`bg-[#8B4513] text-[#FFF5E4] px-4 py-10 ${anton.className}`}>
+    <section className={`md:rounded-l-full bg-[#8B4513] text-[#FFF5E4] px-4 py-10 ${anton.className}`}>
       <h2 className="font-bold text-3xl flex justify-center tracking-wide">SERVICIOS</h2>
       <div className="container mx-auto flex flex-wrap justify-center">
         {plans.map((plan, index) => (
