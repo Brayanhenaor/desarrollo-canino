@@ -65,6 +65,15 @@ const localBusinessSchema = {
 <!doctype html>
 <html lang="es">
   <head>
+    <script is:inline>
+      // Some mobile browsers restore the previous scroll position before
+      // GSAP ScrollTrigger has measured the page, leaving the site opening
+      // "already scrolled". Force every fresh load to start at the top.
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+      window.scrollTo(0, 0);
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#163428" />

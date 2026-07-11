@@ -8,8 +8,15 @@
     <img src="/images/decorative-pattern.jpg" alt="" class="h-auto w-full rounded-full" />
   </div>
 
-  <div class="relative z-10 mx-auto flex max-w-7xl flex-col-reverse items-center gap-16 md:flex-row">
-    <div data-reveal class="relative w-full md:w-1/2">
+  <div class="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-16">
+    <h2
+      data-reveal
+      class="font-display order-1 rotate-1 text-5xl uppercase leading-tight text-primary md:order-1 md:col-start-2 md:row-start-1 md:text-6xl"
+    >
+      El Entorno<br />Perfecto
+    </h2>
+
+    <div data-reveal class="relative order-2 w-full md:order-none md:col-start-1 md:row-span-3 md:row-start-1">
       <div class="blob-shape-2 absolute inset-0 -rotate-3 scale-105 border-8 border-surface-container-lowest bg-primary shadow-[0_0_0_4px_#163428]"></div>
       <img
         src="/images/facility-robledo.jpg"
@@ -21,21 +28,20 @@
       </div>
     </div>
 
-    <div class="flex w-full flex-col items-start md:w-1/2">
-      <h2 data-reveal class="font-display mb-6 rotate-1 text-5xl uppercase leading-tight text-primary md:text-6xl">
-        El Entorno<br />Perfecto
-      </h2>
-      <p data-reveal class="sticker mb-6 -rotate-1 rounded-2xl border-4 border-primary bg-surface-container-lowest p-6 text-lg text-on-surface-variant">
-        Nuestras instalaciones están diseñadas pensando en la seguridad y el bienestar de tu mascota. Ubicados estratégicamente en Robledo Pajarito, ofrecemos un ambiente amplio y controlado donde los perros pueden aprender, socializar y divertirse.
-      </p>
-      <button
-        data-reveal
-        data-gallery-trigger
-        type="button"
-        class="hard-shadow hard-shadow-hover rotate-2 rounded-full border-[3px] border-primary bg-tertiary-container px-8 py-4 text-lg font-bold uppercase tracking-widest text-surface-container-lowest transition-all duration-200"
-      >
-        Conoce Nuestras Instalaciones
-      </button>
-    </div>
+    <p
+      data-reveal
+      class="sticker order-3 -rotate-1 rounded-2xl border-4 border-primary bg-surface-container-lowest p-6 text-lg text-on-surface-variant md:order-3 md:col-start-2 md:row-start-2"
+    >
+      Nuestras instalaciones están diseñadas pensando en la seguridad y el bienestar de tu mascota. Ubicados estratégicamente en Robledo Pajarito, ofrecemos un ambiente amplio y controlado donde los perros pueden aprender, socializar y divertirse.
+    </p>
+
+    <button
+      data-reveal
+      data-gallery-trigger
+      type="button"
+      class="hard-shadow hard-shadow-hover order-4 w-fit rotate-2 rounded-full border-[3px] border-primary bg-tertiary-container px-8 py-4 text-lg font-bold uppercase tracking-widest text-surface-container-lowest transition-all duration-200 md:order-4 md:col-start-2 md:row-start-3"
+    >
+      Conoce Nuestras Instalaciones
+    </button>
   </div>
 </section>

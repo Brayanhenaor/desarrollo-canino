@@ -238,7 +238,11 @@ function animateReveals() {
     gsap.set(items, { y: 44, opacity: 0 });
 
     ScrollTrigger.batch(items, {
-      start: "top 87%",
+      // "top bottom" (not "top 87%") needs the least extra scroll room below
+      // the element to be reachable — critical for the last items on the
+      // page (e.g. the footer credit), where a stricter threshold can sit
+      // past the maximum possible scroll position and never fire normally.
+      start: "top bottom",
       once: true,
       onEnter: (batch) =>
         gsap.to(batch, {

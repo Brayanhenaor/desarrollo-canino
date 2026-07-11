@@ -9,40 +9,45 @@
     <div data-hero-blob class="blob-shape-2 h-[100vw] w-[100vw] bg-tertiary-fixed-dim opacity-60 md:h-[70vw] md:w-[70vw]"></div>
   </div>
 
-  <div class="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center justify-between md:flex-row">
-    <div class="z-20 flex w-full flex-col items-start justify-center pt-10 md:w-1/2 md:pt-0">
-      <h1 data-hero-title class="font-display mb-6 -rotate-3 text-[40px] font-extrabold uppercase leading-[0.9] text-primary mix-blend-multiply sm:text-[64px] md:text-[84px]">
-        Adiestramiento<br />que Fluye<br />con su Energía
-      </h1>
+  <div class="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-8 py-10 md:grid-cols-2 md:gap-16 md:py-0">
+    <h1
+      data-hero-title
+      class="font-display order-1 -rotate-3 text-[40px] font-extrabold uppercase leading-[0.9] text-primary mix-blend-multiply sm:text-[64px] md:order-1 md:col-start-1 md:row-start-1 md:text-[84px]"
+    >
+      Adiestramiento<br />que Fluye<br />con su Energía
+    </h1>
 
-      <p data-hero-text class="sticker mb-8 max-w-md rotate-1 rounded-2xl border-2 border-primary bg-surface-container-lowest/90 p-5 text-body-md text-on-surface-variant">
-        Enfoque Cognitivo-Emocional: Creamos una relación de entendimiento mutuo para que tu perro tome decisiones correctas de forma autónoma.
-      </p>
-
-      <div data-hero-cta class="flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row">
-        <button
-          type="button"
-          class="hard-shadow hard-shadow-hover group flex w-full items-center justify-center gap-2 rounded-full border-[3px] border-secondary-container bg-primary px-8 py-4 text-lg font-bold uppercase tracking-widest text-secondary-container transition-all duration-200 sm:w-auto"
-        >
-          Empieza Hoy
-          <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
-        </button>
+    <div
+      data-hero-image
+      class="relative order-2 mx-auto h-[380px] w-[280px] md:order-none md:col-start-2 md:row-span-3 md:row-start-1 md:mx-0 md:h-[650px] md:w-[500px]"
+    >
+      <div class="blob-shape absolute inset-0 rotate-6 scale-105 border-8 border-surface-container-lowest bg-primary shadow-[0_0_0_4px_#163428]"></div>
+      <img
+        src="/images/hero-dogs.jpg"
+        alt="Perros de la manada en las instalaciones de Desarrollo Canino"
+        class="blob-shape absolute inset-0 z-10 h-full w-full object-cover"
+      />
+      <div data-hero-sticker class="sticker absolute bottom-12 -left-12 z-20 -rotate-6 rounded-2xl border-4 border-primary bg-secondary-container p-6">
+        <p class="font-display text-headline-lg-mobile font-bold leading-none text-primary">100%</p>
+        <p class="mt-1 text-label-caps uppercase text-on-primary-fixed">Refuerzo Positivo</p>
       </div>
     </div>
 
-    <div class="relative z-10 mt-16 flex w-full items-center justify-center md:mt-0 md:w-1/2">
-      <div data-hero-image class="relative h-[450px] w-[320px] md:h-[650px] md:w-[500px]">
-        <div class="blob-shape absolute inset-0 rotate-6 scale-105 border-8 border-surface-container-lowest bg-primary shadow-[0_0_0_4px_#163428]"></div>
-        <img
-          src="/images/hero-dogs.jpg"
-          alt="Perros de la manada en las instalaciones de Desarrollo Canino"
-          class="blob-shape absolute inset-0 z-10 h-full w-full object-cover"
-        />
-        <div data-hero-sticker class="sticker absolute bottom-12 -left-12 z-20 -rotate-6 rounded-2xl border-4 border-primary bg-secondary-container p-6">
-          <p class="font-display text-headline-lg-mobile font-bold leading-none text-primary">100%</p>
-          <p class="mt-1 text-label-caps uppercase text-on-primary-fixed">Refuerzo Positivo</p>
-        </div>
-      </div>
+    <p
+      data-hero-text
+      class="sticker order-3 max-w-md rotate-1 rounded-2xl border-2 border-primary bg-surface-container-lowest/90 p-5 text-body-md text-on-surface-variant md:order-3 md:col-start-1 md:row-start-2"
+    >
+      Enfoque Cognitivo-Emocional: Creamos una relación de entendimiento mutuo para que tu perro tome decisiones correctas de forma autónoma.
+    </p>
+
+    <div data-hero-cta class="order-4 flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row md:order-4 md:col-start-1 md:row-start-3">
+      <button
+        type="button"
+        class="hard-shadow hard-shadow-hover group flex w-full items-center justify-center gap-2 rounded-full border-[3px] border-secondary-container bg-primary px-8 py-4 text-lg font-bold uppercase tracking-widest text-secondary-container transition-all duration-200 sm:w-auto"
+      >
+        Empieza Hoy
+        <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+      </button>
     </div>
   </div>
 </section>
