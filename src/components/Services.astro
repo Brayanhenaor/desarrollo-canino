@@ -1,0 +1,64 @@
+---
+const services = [
+  {
+    title: "Obediencia",
+    description: "Básica y Avanzada. Aprende a comunicarte de manera efectiva con tu mejor amigo.",
+    icon: "/images/icon-graduation.jpg",
+    alt: "Ícono de birrete de graduación",
+    bg: "bg-secondary-container",
+    rotate: "rotate-2",
+    offset: "",
+  },
+  {
+    title: "Modificación de Conducta",
+    description: "Para perros ansiosos, agresivos o inseguros. Trabajamos la causa, no solo el síntoma, con métodos amables.",
+    icon: "/images/icon-heart.jpg",
+    alt: "Ícono de corazón con huella",
+    bg: "bg-tertiary-fixed-dim",
+    rotate: "-rotate-2",
+    offset: "mt-0 md:mt-12",
+  },
+  {
+    title: "Colegio y Guardería",
+    description: "Un espacio seguro para socializar y gastar energía de forma estructurada.",
+    icon: "/images/icon-whistle.jpg",
+    alt: "Ícono de silbato",
+    bg: "bg-primary-fixed-dim",
+    rotate: "rotate-3",
+    offset: "",
+  },
+  {
+    title: "Clases a Domicilio",
+    description: "Entrenamos en tu casa, el lugar donde tu perro realmente vive su día a día.",
+    icon: "/images/icon-treat-bag.jpg",
+    alt: "Ícono de bolsa de premios",
+    bg: "bg-error-container",
+    rotate: "-rotate-1",
+    offset: "mt-0 md:mt-12",
+  },
+];
+---
+
+<section id="servicios" data-reveal-group class="relative px-4 py-24">
+  <div class="mx-auto max-w-7xl">
+    <div class="mb-16 text-center">
+      <h2 data-reveal class="sticker font-display -rotate-1 inline-block rounded-xl border-4 border-primary bg-secondary-fixed-dim px-6 py-2 text-5xl uppercase leading-tight text-primary md:text-6xl">
+        Nuestros Servicios
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+      {
+        services.map((service) => (
+          <div data-reveal class={`sticker ${service.rotate} ${service.offset} flex flex-col items-center rounded-3xl border-4 border-primary bg-surface-container-lowest p-6 text-center transition-transform hover:rotate-0`}>
+            <div class={`mb-4 flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border-2 border-primary ${service.bg}`}>
+              <img src={service.icon} alt={service.alt} class="h-full w-full object-cover" />
+            </div>
+            <h3 class="font-display mb-2 text-2xl font-bold text-primary">{service.title}</h3>
+            <p class="text-on-surface-variant">{service.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

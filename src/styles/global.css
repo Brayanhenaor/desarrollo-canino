@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+@theme {
+  /* Primary — Verde bosque profundo */
+  --color-primary: #163428;
+  --color-primary-container: #2d4b3e;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #99baa9;
+  --color-primary-fixed: #c8ead8;
+  --color-primary-fixed-dim: #adcebd;
+  --color-on-primary-fixed: #012116;
+  --color-on-primary-fixed-variant: #2f4d40;
+
+  /* Secondary — Amarillo mostaza */
+  --color-secondary: #735c00;
+  --color-secondary-container: #fecc00;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #6e5700;
+  --color-secondary-fixed: #ffe089;
+  --color-secondary-fixed-dim: #f0c100;
+  --color-on-secondary-fixed: #241a00;
+  --color-on-secondary-fixed-variant: #574500;
+
+  /* Tertiary — Terracota / café */
+  --color-tertiary: #551d00;
+  --color-tertiary-container: #792d00;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #ff9869;
+  --color-tertiary-fixed: #ffdbcd;
+  --color-tertiary-fixed-dim: #ffb595;
+  --color-on-tertiary-fixed: #351000;
+  --color-on-tertiary-fixed-variant: #7c2e00;
+
+  /* Error / acento coral */
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+
+  /* Surfaces */
+  --color-background: #fdf9f0;
+  --color-on-background: #1c1c16;
+  --color-surface: #fdf9f0;
+  --color-surface-dim: #dddad1;
+  --color-surface-bright: #fdf9f0;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f7f3ea;
+  --color-surface-container: #f1eee5;
+  --color-surface-container-high: #ece8df;
+  --color-surface-container-highest: #e6e2d9;
+  --color-on-surface: #1c1c16;
+  --color-on-surface-variant: #424844;
+  --color-outline: #727974;
+  --color-outline-variant: #c1c8c3;
+  --color-inverse-surface: #31302b;
+  --color-inverse-on-surface: #f4f0e7;
+  --color-inverse-primary: #adcebd;
+
+  /* Radius */
+  --radius-DEFAULT: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+
+  /* Spacing tokens (prefixed "sp-" to avoid colliding with Tailwind's
+     built-in named sizing scale used by max-w-sm/md/lg/xl etc.) */
+  --spacing-sp-xs: 4px;
+  --spacing-sp-sm: 12px;
+  --spacing-sp-md: 24px;
+  --spacing-sp-lg: 48px;
+  --spacing-sp-xl: 80px;
+  --spacing-gutter: 24px;
+  --spacing-gutter-wide: 2rem;
+  --spacing-margin-mobile: 16px;
+  --spacing-margin-desktop: 64px;
+  --spacing-section-gap: 6rem;
+  --spacing-organic-margin: 2.5rem;
+
+  /* Typography */
+  --font-display: "Bricolage Grotesque", sans-serif;
+  --font-body: "Hanken Grotesk", sans-serif;
+
+  --text-display-xl: 84px;
+  --text-display-xl--line-height: 80px;
+  --text-display-xl--letter-spacing: -0.04em;
+  --text-display-xl--font-weight: 800;
+
+  --text-headline-lg: 48px;
+  --text-headline-lg--line-height: 52px;
+  --text-headline-lg--letter-spacing: -0.02em;
+  --text-headline-lg--font-weight: 800;
+
+  --text-headline-lg-mobile: 36px;
+  --text-headline-lg-mobile--line-height: 40px;
+  --text-headline-lg-mobile--font-weight: 800;
+
+  --text-label-caps: 14px;
+  --text-label-caps--line-height: 20px;
+  --text-label-caps--letter-spacing: 0.15em;
+  --text-label-caps--font-weight: 700;
+
+  --text-body-md: 18px;
+  --text-body-md--line-height: 28px;
+  --text-body-md--letter-spacing: 0.01em;
+  --text-body-md--font-weight: 400;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Blob shapes — recortes orgánicos hechos a mano, no círculos perfectos */
+.blob-shape {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+.blob-shape-2 {
+  border-radius: 40% 60% 70% 30% / 50% 60% 40% 50%;
+}
+.blob-shape-3 {
+  border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%;
+}
+
+/* Sticker — tarjeta "despegada" con sombra sólida en vez de difusa */
+.sticker {
+  box-shadow: 6px 8px 0 rgba(22, 52, 40, 0.1);
+}
+
+/* Hard shadow — botón neo-brutalista que se "presiona" al hover */
+.hard-shadow {
+  box-shadow: 4px 4px 0 0 var(--color-primary);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.hard-shadow-hover:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 var(--color-primary);
+}
+
+/* Continuous rotation on decorative blobs is driven by GSAP (data-spin), not
+   CSS keyframes — those elements also receive GSAP transform tweens
+   (parallax/float), and a CSS animation on `transform` would fight them. */
