@@ -12,6 +12,118 @@ function animateNavbar() {
   gsap.from(nav, { y: -32, opacity: 0, duration: 0.7, ease: "power3.out" });
 }
 
+const NAV_SCROLLED_CLASSES = [
+  "bg-surface-container-lowest/90",
+  "backdrop-blur-md",
+  "shadow-lg",
+  "border-2",
+  "border-primary/10",
+  "py-2",
+];
+const NAV_TOP_CLASSES = ["py-4"];
+
+/** Toggles a background + shadow on the sticky nav once the page scrolls past the hero's floating-pill look. */
+function initStickyNavbar() {
+  const inner = document.querySelector("[data-nav-inner]");
+  if (!inner) return;
+
+  const onScroll = () => {
+    const scrolled = window.scrollY > 40;
+    if (scrolled) {
+      inner.classList.remove(...NAV_TOP_CLASSES);
+      inner.classList.add(...NAV_SCROLLED_CLASSES);
+    } else {
+      inner.classList.remove(...NAV_SCROLLED_CLASSES);
+      inner.classList.add(...NAV_TOP_CLASSES);
+    }
+  };
+
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+}
+
+/** Working mobile nav: hamburger opens a dropdown panel, any link tap closes it. */
+function initMobileMenu() {
+  const toggle = document.querySelector("[data-menu-toggle]");
+  const menu = document.querySelector("[data-mobile-menu]");
+  const icon = document.querySelector("[data-menu-icon]");
+  if (!toggle || !menu || !icon) return;
+
+  const closeMenu = () => {
+    menu.classList.add("hidden");
+    toggle.setAttribute("aria-expanded", "false");
+    icon.textContent = "menu";
+  };
+
+  toggle.addEventListener("click", () => {
+    const isOpen = !menu.classList.contains("hidden");
+    if (isOpen) {
+      closeMenu();
+      return;
+    }
+    menu.classList.remove("hidden");
+    toggle.setAttribute("aria-expanded", "true");
+    icon.textContent = "close";
+  });
+
+  menu.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+}
+
+/** Lightbox for the facility photo gallery, opened from the "Conoce Nuestras Instalaciones" button. */
+function initGallery() {
+  const modal = document.querySelector("[data-gallery]");
+  const trigger = document.querySelector("[data-gallery-trigger]");
+  const activeImage = document.querySelector("[data-gallery-active-image]");
+  const counter = document.querySelector("[data-gallery-counter]");
+  const thumbs = Array.from(document.querySelectorAll("[data-gallery-thumb]"));
+  const closeBtn = document.querySelector("[data-gallery-close]");
+  const prevBtn = document.querySelector("[data-gallery-prev]");
+  const nextBtn = document.querySelector("[data-gallery-next]");
+  if (!modal || !trigger || !activeImage || !thumbs.length) return;
+
+  const images = thumbs.map((thumb) => thumb.querySelector("img").src);
+  let index = 0;
+
+  const show = (i) => {
+    index = (i + images.length) % images.length;
+    activeImage.src = images[index];
+    if (counter) counter.textContent = `${index + 1} / ${images.length}`;
+    thumbs.forEach((thumb, ti) => {
+      thumb.dataset.active = String(ti === index);
+    });
+  };
+
+  const open = (startIndex) => {
+    show(startIndex);
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+    document.body.style.overflow = "hidden";
+  };
+
+  const close = () => {
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    document.body.style.overflow = "";
+  };
+
+  trigger.addEventListener("click", () => open(0));
+  closeBtn?.addEventListener("click", close);
+  prevBtn?.addEventListener("click", () => show(index - 1));
+  nextBtn?.addEventListener("click", () => show(index + 1));
+  thumbs.forEach((thumb, i) => thumb.addEventListener("click", () => show(i)));
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) close();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (modal.classList.contains("hidden")) return;
+    if (e.key === "Escape") close();
+    if (e.key === "ArrowLeft") show(index - 1);
+    if (e.key === "ArrowRight") show(index + 1);
+  });
+}
+
 function animateHero() {
   const hero = document.querySelector("[data-hero]");
   if (!hero) return;
@@ -25,14 +137,9 @@ function animateHero() {
     stagger: 0.12,
   })
     .from(
-      hero.querySelector("[data-hero-badge]"),
-      { y: -16, opacity: 0, duration: 0.6 },
-      "-=0.7",
-    )
-    .from(
       hero.querySelector("[data-hero-title]"),
       { y: 36, opacity: 0, duration: 0.8 },
-      "-=0.35",
+      "-=0.7",
     )
     .from(
       hero.querySelector("[data-hero-text]"),
@@ -146,41 +253,6 @@ function animateReveals() {
 }
 
 /**
- * "El Entorno Perfecto" pins while the facility photo grows from a modest
- * sticker-blob into a near full-bleed frame and its blob corners relax
- * into softer rounded ones — the classic Apple product-reveal beat —
- * before the copy fades in.
- */
-function initFacilityGrow() {
-  const section = document.querySelector("#metodologia");
-  const imageWrap = section?.querySelector("[data-facility-image]");
-  const content = section?.querySelectorAll("[data-facility-content]");
-  if (!section || !imageWrap || !content?.length) return;
-
-  const blobEls = imageWrap.querySelectorAll(".blob-shape-2");
-
-  gsap.set(imageWrap, { scale: 0.82, rotate: -5, transformOrigin: "50% 50%" });
-  // Never fully invisible: a direct nav-link jump (or a fast flick past the
-  // trigger start) should never land on blank copy, only dimmed copy.
-  gsap.set(content, { opacity: 0.45, y: 18 });
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: section,
-      start: "top top",
-      end: "+=100%",
-      scrub: 1,
-      pin: true,
-      anticipatePin: 1,
-    },
-  });
-
-  tl.to(imageWrap, { scale: 1.1, rotate: 0, ease: "none", duration: 0.6 }, 0)
-    .to(blobEls, { borderRadius: "24% 24% 24% 24% / 24% 24% 24% 24%", ease: "none", duration: 0.6 }, 0)
-    .to(content, { opacity: 1, y: 0, ease: "none", stagger: 0.12, duration: 0.4 }, 0.55);
-}
-
-/**
  * A little paw-print runner sprints along a winding trail across the
  * Contact section — leaving a trail of paw prints behind it — and "becomes"
  * the WhatsApp button the instant it arrives, tied to scroll. Desktop/tablet
@@ -267,13 +339,7 @@ function initWhatsAppRunner() {
   );
 }
 
-/**
- * Nav links must land on the section looking finished, not mid-scrub. For
- * any target that's pinned (currently just "El Entorno Perfecto"), jump
- * straight to the point where its pin releases — the fully-grown, fully-
- * revealed state — instead of the section's raw top (the empty/dim start
- * of the pin).
- */
+/** Smooth-scrolls nav links to their target section. */
 function initNavLinks() {
   document.querySelectorAll('nav a[href^="#"]').forEach((link) => {
     link.addEventListener("click", (e) => {
@@ -281,13 +347,7 @@ function initNavLinks() {
       if (!target) return;
       e.preventDefault();
 
-      const pinnedTrigger = ScrollTrigger.getAll().find(
-        (st) => st.trigger === target && st.vars.pin,
-      );
-      const y = pinnedTrigger
-        ? pinnedTrigger.end - 1
-        : target.getBoundingClientRect().top + window.scrollY;
-
+      const y = target.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({ top: y, behavior: "smooth" });
     });
   });
@@ -296,7 +356,7 @@ function initNavLinks() {
 function revealEverythingStatically() {
   document
     .querySelectorAll(
-      "[data-reveal], [data-hero-badge], [data-hero-title], [data-hero-text], [data-hero-cta], [data-hero-image], [data-hero-sticker], [data-hero-blob], [data-facility-content], [data-facility-image], [data-whatsapp-button], [data-runner]",
+      "[data-reveal], [data-hero-title], [data-hero-text], [data-hero-cta], [data-hero-image], [data-hero-sticker], [data-hero-blob], [data-whatsapp-button], [data-runner]",
     )
     .forEach((el) => {
       gsap.set(el, { clearProps: "all" });
@@ -304,6 +364,10 @@ function revealEverythingStatically() {
 }
 
 function init() {
+  initMobileMenu();
+  initStickyNavbar();
+  initGallery();
+
   if (prefersReducedMotion) {
     revealEverythingStatically();
     return;
@@ -315,7 +379,6 @@ function init() {
   initContinuousSpin();
   animateFloatingBlobs();
   animateReveals();
-  initFacilityGrow();
   initNavLinks();
 
   ScrollTrigger.matchMedia({

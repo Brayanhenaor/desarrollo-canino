@@ -1,7 +1,7 @@
 ---
 ---
 
-<section id="metodologia" class="relative overflow-hidden bg-primary-fixed px-4 py-24">
+<section id="metodologia" data-reveal-group class="relative overflow-hidden bg-primary-fixed px-4 py-24">
   <div data-float class="blob-shape-2 pointer-events-none absolute -right-20 top-0 h-[400px] w-[400px] bg-secondary-fixed-dim opacity-40"></div>
   <div data-float class="blob-shape-3 pointer-events-none absolute -left-20 bottom-0 h-[300px] w-[300px] bg-tertiary-fixed opacity-60"></div>
   <div class="pointer-events-none absolute left-10 top-1/4 w-32 opacity-20">
@@ -9,7 +9,7 @@
   </div>
 
   <div class="relative z-10 mx-auto flex max-w-7xl flex-col-reverse items-center gap-16 md:flex-row">
-    <div data-facility-image class="relative w-full md:w-1/2">
+    <div data-reveal class="relative w-full md:w-1/2">
       <div class="blob-shape-2 absolute inset-0 -rotate-3 scale-105 border-8 border-surface-container-lowest bg-primary shadow-[0_0_0_4px_#163428]"></div>
       <img
         src="/images/facility-robledo.jpg"
@@ -17,19 +17,20 @@
         class="blob-shape-2 relative z-10 h-[400px] w-full border-4 border-surface-container-lowest object-cover md:h-[500px]"
       />
       <div class="sticker absolute -bottom-6 -right-6 z-20 rotate-6 rounded-xl bg-secondary-container p-4">
-        <p class="text-label-caps font-bold text-primary">📍 CALLE 72 #99-183</p>
+        <p class="text-label-caps font-bold text-primary">📍 CALLE 72 #99-183 Medellín</p>
       </div>
     </div>
 
     <div class="flex w-full flex-col items-start md:w-1/2">
-      <h2 data-facility-content class="font-display mb-6 rotate-1 text-5xl uppercase leading-tight text-primary md:text-6xl">
+      <h2 data-reveal class="font-display mb-6 rotate-1 text-5xl uppercase leading-tight text-primary md:text-6xl">
         El Entorno<br />Perfecto
       </h2>
-      <p data-facility-content class="sticker mb-6 -rotate-1 rounded-2xl border-4 border-primary bg-surface-container-lowest p-6 text-lg text-on-surface-variant">
+      <p data-reveal class="sticker mb-6 -rotate-1 rounded-2xl border-4 border-primary bg-surface-container-lowest p-6 text-lg text-on-surface-variant">
         Nuestras instalaciones están diseñadas pensando en la seguridad y el bienestar de tu mascota. Ubicados estratégicamente en Robledo Pajarito, ofrecemos un ambiente amplio y controlado donde los perros pueden aprender, socializar y divertirse.
       </p>
       <button
-        data-facility-content
+        data-reveal
+        data-gallery-trigger
         type="button"
         class="hard-shadow hard-shadow-hover rotate-2 rounded-full border-[3px] border-primary bg-tertiary-container px-8 py-4 text-lg font-bold uppercase tracking-widest text-surface-container-lowest transition-all duration-200"
       >

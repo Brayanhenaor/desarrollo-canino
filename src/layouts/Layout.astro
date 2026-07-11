@@ -7,9 +7,59 @@ interface Props {
 }
 
 const {
-  title = "Desarrollo Canino — Adiestramiento que Fluye con su Energía",
-  description = "Adiestramiento canino con enfoque cognitivo-emocional en Robledo Pajarito, Medellín. Obediencia, modificación de conducta, colegio y guardería.",
+  title = "Desarrollo Canino — Adiestramiento Canino en Robledo, Medellín",
+  description = "Adiestramiento canino con enfoque cognitivo-emocional en Robledo Pajarito, Medellín. Obediencia, modificación de conducta (perros ansiosos, agresivos e inseguros), colegio, guardería y clases a domicilio.",
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL("/og-image.jpg", Astro.site);
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Desarrollo Canino",
+  alternateName: "Escuela de Adiestramiento Canino Desarrollo Canino",
+  description,
+  url: canonicalURL.toString(),
+  image: ogImageURL.toString(),
+  telephone: "+573046087510",
+  priceRange: "$140.000 - $2.600.000 COP",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Calle 72 #99-183",
+    addressLocality: "Medellín",
+    addressRegion: "Antioquia",
+    addressCountry: "CO",
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Medellín",
+  },
+  sameAs: ["https://instagram.com/desarrollo_canino"],
+  makesOffer: [
+    {
+      "@type": "Offer",
+      name: "Semana de Entrenamiento (Semi-Internado)",
+      description: "Modalidad semi-internado de lunes a viernes para reactividad y obediencia.",
+      price: "350000",
+      priceCurrency: "COP",
+    },
+    {
+      "@type": "Offer",
+      name: "Transformación Completa (Internado 6 Semanas)",
+      description: "Programa de internado de 6 semanas para perros agresivos, reactivos o con casos complejos.",
+      price: "2600000",
+      priceCurrency: "COP",
+    },
+    {
+      "@type": "Offer",
+      name: "Clases Personalizadas a Domicilio",
+      description: "Clase de entrenamiento de 2 horas en la casa del cliente.",
+      price: "140000",
+      priceCurrency: "COP",
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -17,10 +67,43 @@ const {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#163428" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="generator" content={Astro.generator} />
+
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Desarrollo Canino" />
+    <meta
+      name="keywords"
+      content="adiestramiento canino Medellín, entrenamiento de perros Robledo, modificación de conducta canina, guardería canina, colegio canino, perros agresivos, perros ansiosos, clases de obediencia a domicilio"
+    />
+
+    <!-- Open Graph / Facebook, WhatsApp, LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Desarrollo Canino" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Desarrollo Canino — Adiestramiento en Robledo, Medellín" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <!-- Structured data for Google & AI answer engines -->
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

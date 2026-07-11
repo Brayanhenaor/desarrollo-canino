@@ -1,0 +1,22 @@
+{
+  "name": "Desarrollo Canino",
+  "short_name": "Desarrollo Canino",
+  "description": "Adiestramiento canino con enfoque cognitivo-emocional en Robledo, Medellín.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fdf9f0",
+  "theme_color": "#163428",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "/favicon-196.png",
+      "sizes": "196x196",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

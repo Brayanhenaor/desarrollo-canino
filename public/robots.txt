@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://desarrollocanino.com/sitemap-index.xml

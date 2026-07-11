@@ -1,0 +1,106 @@
+---
+const plans = [
+  {
+    modality: "Semi-Internado · Lunes a Viernes",
+    title: "Semana de Entrenamiento",
+    description: "Ideal para reactividad, obediencia y trabajo de base. Tu perro se queda con nosotros de lunes a viernes en un entorno controlado que acelera el aprendizaje.",
+    price: "$350.000",
+    priceNote: "/ semana",
+    rotate: "-rotate-1",
+    featured: false,
+    cta: "Reservar esta Semana",
+  },
+  {
+    modality: "Internado · 6 Semanas",
+    title: "Transformación Completa",
+    description: "Para perros agresivos, reactivos o con casos complejos. Inmersión total con seguimiento diario y refuerzo positivo.",
+    price: "$2.600.000",
+    priceNote: "/ programa completo",
+    rotate: "rotate-0",
+    featured: true,
+    limitedSpots: true,
+    cta: "Aplicar al Programa",
+  },
+  {
+    modality: "A Domicilio · Personalizadas",
+    title: "Clases en tu Casa",
+    description: "Entrenamos en el lugar donde tu perro realmente vive su día a día. Ideal para reforzar hábitos puntuales. Cada clase dura 2 horas.",
+    price: "$140.000",
+    priceNote: "/ clase (2 horas)",
+    rotate: "rotate-1",
+    featured: false,
+    cta: "Agendar mi Clase",
+  },
+];
+---
+
+<section id="precios" data-reveal-group class="relative px-4 py-24">
+  <div class="mx-auto max-w-7xl">
+    <div class="mb-16 text-center">
+      <h2 data-reveal class="sticker font-display -rotate-1 inline-block rounded-xl border-4 border-primary bg-secondary-fixed-dim px-6 py-2 text-5xl uppercase leading-tight text-primary md:text-6xl">
+        Planes y Precios
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+      {
+        plans.map((plan) => (
+          <div
+            data-reveal
+            class={`sticker relative flex flex-col rounded-3xl border-4 p-8 ${plan.rotate} ${
+              plan.featured
+                ? "border-primary bg-surface-container-lowest md:-translate-y-4 md:scale-105"
+                : "border-primary bg-surface-container-lowest"
+            }`}
+          >
+            {plan.featured && (
+              <div class="sticker absolute -top-5 left-1/2 -translate-x-1/2 rotate-2 whitespace-nowrap rounded-full border-2 border-primary bg-secondary-container px-4 py-1 text-label-caps font-bold uppercase text-primary">
+                Más Recomendado
+              </div>
+            )}
+            <p class="mb-1 text-label-caps font-bold uppercase text-tertiary">{plan.modality}</p>
+            <h3 class="font-display mb-3 text-3xl font-bold text-primary">{plan.title}</h3>
+            <p class="mb-6 text-on-surface-variant">{plan.description}</p>
+            <p class="font-display mb-2 text-primary">
+              <span class="text-4xl font-extrabold">{plan.price}</span>
+              <span class="text-base font-normal text-on-surface-variant"> {plan.priceNote}</span>
+            </p>
+            {plan.limitedSpots && (
+              <p class="mb-4 flex items-center gap-1 text-label-caps font-bold uppercase text-error">
+                <span class="material-symbols-outlined text-base">bolt</span>
+                Cupos limitados
+              </p>
+            )}
+            <a
+              href="https://wa.me/573046087510"
+              target="_blank"
+              rel="noopener noreferrer"
+              class={`hard-shadow hard-shadow-hover mt-auto flex items-center justify-center gap-2 rounded-full border-[3px] px-6 py-3 text-label-caps font-bold uppercase tracking-widest transition-all duration-200 ${
+                plan.featured
+                  ? "border-secondary-container bg-primary text-secondary-container"
+                  : "border-primary bg-transparent text-primary hover:bg-primary hover:text-secondary-container"
+              }`}
+            >
+              {plan.cta}
+              <span class="material-symbols-outlined text-lg">send</span>
+            </a>
+          </div>
+        ))
+      }
+    </div>
+
+    <div data-reveal class="sticker mx-auto mt-12 flex max-w-2xl flex-col items-center gap-4 rounded-2xl border-4 border-primary bg-primary-fixed p-6 text-center sm:flex-row sm:text-left">
+      <span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+      <p class="flex-1 font-bold text-primary">¿Ninguno se ajusta a tu peludo? Le armamos un plan a la medida de tu mascota.</p>
+      <a
+        href="https://wa.me/573046087510"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hard-shadow hard-shadow-hover flex shrink-0 items-center gap-2 rounded-full border-[3px] border-secondary-container bg-primary px-6 py-3 text-label-caps font-bold uppercase tracking-widest text-secondary-container transition-all duration-200"
+      >
+        Escríbenos
+        <span class="material-symbols-outlined text-lg">send</span>
+      </a>
+    </div>
+  </div>
+</section>
